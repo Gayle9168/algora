@@ -239,6 +239,41 @@ Do not create any component, route or visual in this prompt.
 
 ---
 
+## PROMPT 3.1b — Lock the builder with tests (do before 3.2)
+
+> Why now: you have vitest installed with 0 tests, and 12 algorithms are about to be built on
+> top of `StepBuilder`. The deep-clone and cumulative-counter rules are exactly the kind of bug
+> that looks fine for months and then shows up as "scrubbing backwards shows the wrong board".
+> Catching it now costs one prompt; catching it in batch 07 costs a rewrite of every algorithm.
+
+```
+Create `src/engine/builder.test.ts` using vitest. Test src/engine/builder.ts only.
+Do not modify builder.ts or types.ts unless a test proves a real bug — if it does, fix the
+source, never weaken the test.
+
+Cover exactly these behaviours:
+1. `i` is assigned sequentially from 0.
+2. Deep-clone isolation: emit a step with an ArrayFrame, then MUTATE that same frame object
+   (change values[0], add a pointer) and emit again. Assert step 0's frame is completely
+   unchanged. This is the single most important test in the file.
+3. Counters snapshot per step: bump('comparisons') between emits and assert each step holds the
+   value as of ITS emit, and that a later bump does not retroactively change an earlier step.
+4. Counters are cumulative and never decrease across the step list.
+5. emit() throws a descriptive Error for codeLine 0, for codeLine = pseudocode.length + 1, and
+   for a negative codeLine. Assert the message names the offending line number.
+6. finish() returns totalCounters equal to the final step's counters, and the returned run is
+   frozen (mutating run.steps or run.slug throws or is a no-op).
+7. aux panels are deep-cloned too: mutate a queue's items array after emitting and assert the
+   earlier step is unaffected.
+
+Pure Node, no DOM, no React. Only create this one file.
+```
+
+**Accept when:** `npm run test` passes with ~7 green tests. If test 2 or 7 FAILS, that is a real
+bug in the builder and you must fix `builder.ts` before running 3.2 — do not proceed.
+
+---
+
 ## PROMPT 3.2 — First three algorithms (prove the contract)
 
 ```
