@@ -5,6 +5,33 @@ and verify before moving to the next. Do not merge two prompts into one message.
 
 ---
 
+## Where you are
+
+Batch 01 (foundation: tokens, fonts, shells, routing) is **done in Lovable**. Batch 02
+(marketing pages) is deliberately **deferred to near the end** — its hero/section demos must
+run on the real engine, so building it now means building it twice.
+
+Next up is **batch 03, the engine**. Do STEP 0, then PROMPT 3.0 (which now doubles as a
+batch-01 acceptance check), then 3.1 → 3.5.
+
+Dependency-correct order for the whole project:
+
+```
+01 foundation  ✅ done
+03 engine      ← you are here
+04 visualizer
+05 explore
+06 lessons
+07 practice
+09 onboarding + roadmap
+08 gamification
+10 backend (Supabase)
+02 marketing (now with live engine demos)
+11 SEO + share images
+```
+
+---
+
 ## STEP 0 — One-time Lovable setup (do this before prompt 3.0)
 
 Open your Lovable project → **Settings → Knowledge** (a.k.a. Project instructions) and paste
@@ -78,12 +105,19 @@ Report the following about the current repo, as a short markdown answer:
    Tailwind tokens from the design system are already wired in tailwind.config.ts
    (list the token names that exist, and the ones that are missing).
 5. The list of routes currently registered in the router.
+6. Batch-01 acceptance check: confirm (yes/no + file path) that
+   (a) the light-theme tokens are defined once in a single source of truth,
+   (b) Instrument Sans and JetBrains Mono are loaded and mapped to font-sans / font-mono,
+   (c) no component file contains a hardcoded hex colour — if any do, list those files,
+   (d) no dark-mode / dark: class or dark background remains anywhere.
 
 Do not propose changes. Do not write code. Just the report.
 ```
 
 **What to do with the answer:** paste it back to me. If item 2 lists components that fake
 animation with timers, we mark them for deletion in batch 04 instead of trying to save them.
+If item 6 finds hardcoded hexes or leftover `dark:` classes, we clean those in one small
+follow-up prompt *before* 3.1 — token debt gets 10x more expensive once 40 more screens exist.
 
 ---
 
