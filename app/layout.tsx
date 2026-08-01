@@ -1,10 +1,25 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Instrument_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
+const instrumentSans = Instrument_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-instrument-sans',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'algora',
+  description: 'Learn algorithms by watching them run.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -26,11 +41,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  colorScheme: 'light',
+  themeColor: '#F7F9F8',
 }
 
 export default function RootLayout({
@@ -39,8 +51,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html
+      lang="en"
+      className={`bg-paper ${instrumentSans.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="bg-paper text-ink font-sans antialiased leading-relaxed">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
