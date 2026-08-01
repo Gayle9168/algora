@@ -58,6 +58,12 @@ checklist → Known failure modes & repair prompts.**
 01 → 02 → 03 → 04 → 05 → 11 → 06 → 07 → 08 → 09 → 10
 ```
 
+> **Superseded once 01, 03 and 04 are done.** Batch 02 sat at position two only because it "forces
+> the player into existence early" — the engine and visualizer now exist, so that reason is spent.
+> The live order from here is in `interactive/ready/00-ORDER-AFTER-04.md`:
+> `05 → 02 (minus auth) → 11 → 06 → 07 → 08 → 09 → 10 (+ the auth screens)`.
+> That file also resolves the conflicting order printed in `ready/batch-03-PASTE-PACK.md`.
+
 Batches 6–9 make people **stay**; batch 11 is what makes people **arrive**. A retention feature
 with no traffic retains nobody, so once the visualizer and catalog are real (end of 05), ship the
 growth layer before the deeper learning loop. Strategy and channel reasoning live in `GROWTH.md`.

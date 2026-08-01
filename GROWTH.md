@@ -2,6 +2,10 @@
 
 > Companion to `INTERACTIVE-PLAN.md`. That file answers *what to build*. This one answers
 > *why anyone shows up*, and which build decisions are actually growth decisions.
+>
+> **This file starts at launch day.** For the weeks *before* launch — the half-open door, the
+> screen-recording and Remotion video pipeline, professor outreach, and the six-week countdown —
+> see `PRE-GROWTH.md`.
 
 ---
 
