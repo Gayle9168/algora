@@ -1,5 +1,20 @@
 # Batch 02 — Marketing goes live (paste pack, adapted to the real repo)
 
+> ## DO NOT PASTE THIS FILE YET — it is being rewritten.
+>
+> This version has the same defect as the old batch-05 pack: it asserts file paths I never
+> verified, and — worse — prompt 2.2 tells Lovable to move your landing page's JSX into
+> `src/components/marketing/`. **That single instruction is what would destroy your approved
+> design**, because Lovable re-emits JSX it is told to move; it does not copy it.
+>
+> Rewrite lands after prompt 5.0's discovery answer, using the ADDITIVE-ONLY LOCK BLOCK in
+> `batch-05-PASTE-PACK.md` §3. The rewrite will add HeroDemo as a new standalone file with a
+> one-line insertion you can eyeball — no page restructuring at all.
+>
+> Also note the router/folder conflict documented in `batch-05-PASTE-PACK.md` §2: this file's
+> "your routes are TanStack file routes" claim is unverified and contradicts
+> `00-shared-context.md`. Discovery settles it.
+
 Run this **after batch 05**, not before. `00-ORDER-AFTER-04.md` explains why: the landing page's
 algorithm showcase is the same component as `/explore`'s card, and 05 owns it.
 
